@@ -34,13 +34,9 @@ blocks:
         - name: Check Running Images
           commands:
             - docker ps
-        - name: Run Unit test
+        - name: Run Unit tests
           commands:
             - docker exec -it semaphore-pyflask-docker_flasksemaphore_1 python -m unittest
-        - name: Calculate Test Coverage
-          commands:
-            - coverage run -m unittest discover
-            - coverage report -m
 promotions:
   - name: Deploy to Heroku
     pipeline_file: deploy-heroku.yml
