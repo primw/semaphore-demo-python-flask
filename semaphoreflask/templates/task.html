@@ -8,7 +8,7 @@
           <h5 class="card-title">{{ data.task_title }}</h5>
           <p class="card-text">{{ data.task_description }}</p>
           <p class="card-text">{{ data.task_created_at }}</p>
-          <a href="{{ url_for('task_update', task_id=data._id) }}" class="btn btn-secondary btn-sm m-1">Update Task</a>
+          <a href="{{ url_for('task_update', task_id=data._id) }}" class="btn btn-secondary btn-sm m-1">Update Post</a>
           <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
           <a href="{{ url_for('tasks_all') }}" class="card-link">Go to Task list</a>
         </div>
@@ -17,7 +17,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="deleteModalLabel">Delete Task?</h5>
+              <h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -37,12 +37,12 @@
       <div class="col-md-12">
         <div class="error-template">
           <h1>
-            Got Lucky!</h1>
+            CS 491 is Poggers!!</h1>
           <h2>
-            No tasks Found</h2>
+            No Posts Found</h2>
           <div class="error-actions">
             <a href="{{ url_for('task_new') }}" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
-              Create new task </a>
+              Create new post </a>
           </div>
         </div>
       </div>
