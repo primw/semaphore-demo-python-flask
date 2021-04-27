@@ -16,7 +16,7 @@ def tasks_all():
                 print(task)
                 tasks_data.append({'task_id': task['_id'], 'task_title': task['task_title'], 'task_description': task['task_description'],
                 'task_created_at': task['task_created_at']})
-    return render_template('tasks_all.html', tasks= tasks_data, title='All Tasks')
+    return render_template('tasks_all.html', tasks= tasks_data, title='All Posts')
 
 
 @app.route('/task/new', methods = ['GET', 'POST'])
@@ -30,7 +30,7 @@ def task_new():
                                    'task_created_at': task_created_at})
         flash(f'Task { form.task_title.data } has been created successfully!', 'success')
         return redirect(url_for('tasks_all'))
-    return render_template('task_create.html', title='Create New Task', form=form, operation='create')
+    return render_template('task_create.html', title='Create New Post', form=form, operation='create')
 
 
 @app.route('/task/<task_id>', methods = ['GET'])
@@ -38,7 +38,7 @@ def task_view(task_id):
     if len(task_id) == 24:
         task = mongo.db.tasks.find_one({'_id': ObjectId(task_id)})
         if task:
-            return render_template('task.html', task = [task], title='Task: {0}'.format(task['task_title']))
+            return render_template('task.html', task = [task], title='Post: {0}'.format(task['task_title']))
         else:
             return render_template('404.html')
     else:
@@ -59,13 +59,13 @@ def task_update(task_id):
                                                      }
                                           }, 
                                           upsert=False)
-                flash(f'Task has been updated', 'success')
+                flash(f'Post has been updated', 'success')
                 return redirect(url_for('task_view', task_id=ObjectId(task_id)))
             elif request.method == 'GET':
                 form.task_title.data = task_to_update['task_title']
                 form.task_description.data = task_to_update['task_description']
-                form.task_submit.data = 'Update Task'
-        return render_template('task_create.html', title='Update task: {0}'.format(task_to_update['task_title']),
+                form.task_submit.data = 'Update Post'
+        return render_template('task_create.html', title='Update Post: {0}'.format(task_to_update['task_title']),
                                form=form, operation='update')
     else:
         return render_template('404.html')
@@ -74,7 +74,7 @@ def task_update(task_id):
 @app.route('/task/<task_id>/delete', methods = ['POST'])
 def task_delete(task_id):
     mongo.db.tasks.remove({"_id": ObjectId(task_id)})
-    flash(f'Task has been deleted sucessfully', 'success')
+    flash(f'Post has been deleted sucessfully', 'success')
     return redirect(url_for('tasks_all'))
 
 
