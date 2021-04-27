@@ -34,7 +34,7 @@ blocks:
         - name: Check Running Images
           commands:
             - docker ps
-        - name: Run Unit test & Calculate Code Coverage
+        - name: Run Unit tests
           commands:
             - docker exec -it semaphore-pyflask-docker_flasksemaphore_1 python -m unittest
 promotions:
