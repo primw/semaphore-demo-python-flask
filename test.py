@@ -16,7 +16,7 @@ class TaskTest(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
     #Test for all page connections + mock input and assertEqual using tasks = mongo.db.tasks.find() i.e routes.py
-    def test_create_post(self):
+    def test_create_post_with_database(self):
         task_title = "test"
         task_description = "test-post"
         task_created_at = "NULL"
@@ -31,6 +31,8 @@ class TaskTest(unittest.TestCase):
                     'task_created_at': task['task_created_at']}) 
         
         self.assertEqual(tasks_data[0]['task_title'], "test")
+        self.assertEqual(tasks_data[0]['task_description'], "test-post")
+        self.assertEqual(tasks_data[0]['task_created_at'], "NULL")
 
 if __name__ == '__main__':
     unittest.main()
