@@ -30,7 +30,7 @@ class TaskTest(unittest.TestCase):
                     tasks_data.append({'task_id': task['_id'], 'task_title': task['task_title'], 'task_description': task['task_description'],
                     'task_created_at': task['task_created_at']}) 
         
-        self.assertEqual(tasks_data[0].'task_title', "test")
+        self.assertEqual(tasks_data[0].['task_title'], "test")
 
 if __name__ == '__main__':
     unittest.main()
