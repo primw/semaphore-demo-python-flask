@@ -59,7 +59,7 @@ class TestMongoDB(unittest.TestCase):
     def test_correct_post_creation_time_with_database(self):
         task_title = "NULL"
         task_description = "NULL"
-        task_created_at = "null"
+        task_created_at = "NULL"
         mongo.db.tasks.insert_one({'task_title': task_title, 'task_description': task_description, 'task_created_at': task_created_at})
         tasks_data = []
         if mongo:
@@ -70,7 +70,7 @@ class TestMongoDB(unittest.TestCase):
                     tasks_data.append({'task_id': task['_id'], 'task_title': task['task_title'], 'task_description': task['task_description'],
                     'task_created_at': task['task_created_at']}) 
         
-        self.assertEqual(tasks_data[0]['task_created_at'], "null")
+        self.assertEqual(tasks_data[0]['task_created_at'], "NULL")
 
     
 if __name__ == '__main__':
