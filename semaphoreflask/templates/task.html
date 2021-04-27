@@ -10,7 +10,7 @@
           <p class="card-text">{{ data.task_created_at }}</p>
           <a href="{{ url_for('task_update', task_id=data._id) }}" class="btn btn-secondary btn-sm m-1">Update Post</a>
           <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
-          <a href="{{ url_for('tasks_all') }}" class="card-link">Go to Task list</a>
+          <a href="{{ url_for('tasks_all') }}" class="card-link">Go to All Posts</a>
         </div>
       </div>
       <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
