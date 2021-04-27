@@ -1,5 +1,4 @@
 from semaphoreflask import app, mongo
-from semaphoreflask.forms import CreateTaskForm
 import unittest
 
 class TestFlaskAppConnections(unittest.TestCase):
@@ -73,23 +72,6 @@ class TestMongoDB(unittest.TestCase):
         self.assertEqual(tasks_data[0]['task_created_at'], "NULL")
         mongo.db.tasks.remove({})
 
-    def test_create_form(self):
-        form = CreateTaskForm()
-        form.task_title.data = 'Prim'
-        form.task_title.data = 'is cool'
 
-        mongo.db.tasks.insert_one({'task_title': form.task_title.data, 'task_description': form.task_title.data, 'task_created_at': 'NULL'})
-        tasks_data = []
-        if mongo:
-            tasks = mongo.db.tasks.find()
-            if tasks:
-                for task in tasks:
-                    tasks_data.append({'task_id': task['_id'], 'task_title': task['task_title'], 'task_description': task['task_description'],
-                    'task_created_at': task['task_created_at']}) 
-        
-        self.assertEqual(tasks_data[0]['task_title'], form.task_title.data)
-        mongo.db.tasks.remove({})
-
-        
 if __name__ == '__main__':
     unittest.main()
