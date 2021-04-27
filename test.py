@@ -37,6 +37,7 @@ class TestMongoDB(unittest.TestCase):
                     'task_created_at': task['task_created_at']}) 
         
         self.assertEqual(tasks_data[0]['task_title'], "test")
+        mongo.db.tasks.remove({})
     
     #Test for correct post contents in db
     def test_correct_post_contents_with_database(self):
@@ -54,6 +55,7 @@ class TestMongoDB(unittest.TestCase):
                     'task_created_at': task['task_created_at']}) 
         
         self.assertEqual(tasks_data[0]['task_description'], "test-post")
+        mongo.db.tasks.remove({})
     
     #Tets for correct post creation time in db
     def test_correct_post_creation_time_with_database(self):
@@ -71,6 +73,7 @@ class TestMongoDB(unittest.TestCase):
                     'task_created_at': task['task_created_at']}) 
         
         self.assertEqual(tasks_data[0]['task_created_at'], "NULL")
+        mongo.db.tasks.remove({})
 
     
 if __name__ == '__main__':
