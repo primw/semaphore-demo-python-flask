@@ -89,5 +89,7 @@ class TestMongoDB(unittest.TestCase):
         
         self.assertEqual(tasks_data[0]['task_title'], form.task_title.data)
         mongo.db.tasks.remove({})
+
+        
 if __name__ == '__main__':
     unittest.main()
