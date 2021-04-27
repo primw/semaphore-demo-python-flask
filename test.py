@@ -1,6 +1,6 @@
 from semaphoreflask import app, mongo
+from semaphoreflask.forms import CreateTaskForm
 import unittest
-from forms import CreateTaskForm
 
 class TestFlaskAppConnections(unittest.TestCase):
     #Tests for a connection to the home page url
